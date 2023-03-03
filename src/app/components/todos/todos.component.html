@@ -1,0 +1,100 @@
+<div class="container text-center">
+  <div class="row mb-4">
+    <div class="col-9 mx-auto">  
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Create a new To-Do</h5>
+          <form [formGroup]="form">
+            <div class="row pb-2 pt-2">
+              <label for="email" class="col-md-4 col-form-label text-md-end">Message:</label>
+              <div class="col-md-6">
+                <input formControlName="message" type="text" class="form-control" />
+              </div>
+            </div>
+            <button type="button" (click)="create()" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-2">
+    <div class="col">  
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th colspan="6" scope="col">Open To-Dos</th>
+          </tr>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Message</th>
+            <th scope="col">State</th>
+            <th scope="col">UpdatedAt</th>
+            <th scope="col">Close</th>
+            <th scope="col">Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container *ngFor="let todo of todosOpen">
+            <tr>
+              <th>{{ todo.id }}</th>
+              <td>{{ todo.message }}</td>
+              <td>{{ todo.state }}</td>
+              <td>{{ todo.updatedAt }}</td>
+              <td>
+                <button class="btn btn-secondary" (click)="updateTodo(todo.id, todo.state)">
+                  <i class="bi-x"></i>
+                </button>
+              </td>
+              <td>
+                <button class="btn btn-danger" (click)="deleteTodo(todo.id)">
+                  <i class="bi-trash"></i>
+                </button>
+              </td>
+            </tr>
+          </ng-container>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">  
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th colspan="6" scope="col">Closed To-Dos</th>
+          </tr>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Message</th>
+            <th scope="col">State</th>
+            <th scope="col">UpdatedAt</th>
+            <th scope="col">Open</th>
+            <th scope="col">Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container *ngFor="let todo of todosClosed">
+            <tr>
+              <th>{{ todo.id }}</th>
+              <td>{{ todo.message }}</td>
+              <td>{{ todo.state }}</td>
+              <td>{{ todo.updatedAt }}</td>
+              <td>
+                <button class="btn btn-primary" (click)="updateTodo(todo.id, todo.state)">
+                  <i class="bi-arrow-clockwise"></i>
+                </button>
+              </td>
+              <td>
+                <button class="btn btn-danger" (click)="deleteTodo(todo.id)">
+                  <i class="bi-trash"></i>
+                </button>
+              </td>
+            </tr>
+          </ng-container>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

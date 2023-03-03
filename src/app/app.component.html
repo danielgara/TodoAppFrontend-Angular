@@ -1,0 +1,36 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-secondary py-4">
+  <div class="container">
+    <a class="navbar-brand" routerLink="">ToDo App</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav ms-auto">
+        <a class="nav-link active" routerLink="">Home</a>
+        <a class="nav-link active" routerLink="about">About</a>
+        <a class="nav-link active" routerLink="todos">ToDos</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<header class="masthead bg-primary text-center py-4 app-subheader">
+  <div class="container d-flex align-items-center flex-column">
+    <h3>Manage your To-Dos</h3>
+  </div>
+</header>
+
+<div class="container my-4">
+  <router-outlet></router-outlet>
+</div>
+
+<!-- footer -->
+<div class="copyright py-4 text-center text-white">
+  <div class="container">
+    <small>
+      Copyright &copy; ToDo App 2023
+    </small>
+  </div>
+</div>
+<!-- footer -->
