@@ -8,10 +8,9 @@ export class TodoService {
   constructor(private http: HttpClient) {}
 
   create(message: string) {
-    let data = {
-      message: message
-    };
-    return this.http.post(`${BACKEND_URI}todos`, data);
+    const formData = new FormData();
+    formData.append('message', message);
+    return this.http.post(`${BACKEND_URI}todos`, formData);
   }
 
   getOpen():Observable<any> {
