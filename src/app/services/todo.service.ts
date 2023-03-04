@@ -33,4 +33,12 @@ export class TodoService {
   delete(id: string) {
     return this.http.get(`${BACKEND_URI}todos/delete/${id}`);
   }
+
+  getSortedOpen(order: string):Observable<any> {
+    return this.http.get(`${BACKEND_URI}todos/open/${order}`);
+  }
+
+  getSortedClosed(order: string):Observable<any> {
+    return this.http.get(`${BACKEND_URI}todos/closed/${order}`);
+  }
 }

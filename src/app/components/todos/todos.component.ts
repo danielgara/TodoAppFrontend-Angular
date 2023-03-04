@@ -54,4 +54,16 @@ export class TodosComponent implements OnInit {
       this.getClosed();
     });
   }
+
+  sort(status: string, order: string) {
+    if (status == "OPEN"){
+      this.todoService.getSortedOpen(order).subscribe(res => {
+        this.todosOpen = res.list;
+      });
+    } else {
+      this.todoService.getSortedClosed(order).subscribe(res => {
+        this.todosClosed = res.list;
+      });
+    }
+  }
 }
