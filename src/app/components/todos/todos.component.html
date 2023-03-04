@@ -11,6 +11,12 @@
                 <input formControlName="message" type="text" class="form-control" />
               </div>
             </div>
+            <div class="row pb-2 pt-2">
+              <label for="email" class="col-md-4 col-form-label text-md-end">Image:</label>
+              <div class="col-md-6">
+                <input type="file" formControlName="image" (change)="onFileChange($event)" class="form-control" />
+              </div>
+            </div>
             <button type="button" (click)="create()" class="btn btn-primary">Submit</button>
           </form>
         </div>
@@ -32,6 +38,7 @@
               <i class="bi-arrow-down-square-fill" (click)="sort('OPEN', 'desc')"></i>
             </th>
             <th scope="col">State</th>
+            <th scope="col">Image</th>
             <th scope="col">UpdatedAt</th>
             <th scope="col">Close</th>
             <th scope="col">Delete</th>
@@ -43,6 +50,9 @@
               <th>{{ todo.id }}</th>
               <td>{{ todo.message }}</td>
               <td>{{ todo.state }}</td>
+              <td><img *ngIf="todo.image != ''" height="50px" 
+                src="{{'http://localhost:3001/images/' + todo.image}}"/>
+              </td>
               <td>{{ todo.updatedAt }}</td>
               <td>
                 <button class="btn btn-secondary" (click)="updateTodo(todo.id, todo.state)">
@@ -75,6 +85,7 @@
               <i class="bi-arrow-down-square-fill" (click)="sort('CLOSED', 'desc')"></i>
             </th>
             <th scope="col">State</th>
+            <th scope="col">Image</th>
             <th scope="col">UpdatedAt</th>
             <th scope="col">Open</th>
             <th scope="col">Delete</th>
@@ -86,6 +97,9 @@
               <th>{{ todo.id }}</th>
               <td>{{ todo.message }}</td>
               <td>{{ todo.state }}</td>
+              <td><img *ngIf="todo.image != ''" height="50px" 
+                src="{{'http://localhost:3001/images/' + todo.image}}"/>
+              </td>
               <td>{{ todo.updatedAt }}</td>
               <td>
                 <button class="btn btn-primary" (click)="updateTodo(todo.id, todo.state)">

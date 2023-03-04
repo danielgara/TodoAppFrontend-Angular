@@ -7,9 +7,10 @@ import { BACKEND_URI } from '../constants';
 export class TodoService {
   constructor(private http: HttpClient) {}
 
-  create(message: string) {
+  create(message: string, imageFile: File | string) {
     const formData = new FormData();
     formData.append('message', message);
+    formData.append('image', imageFile);
     return this.http.post(`${BACKEND_URI}todos`, formData);
   }
 

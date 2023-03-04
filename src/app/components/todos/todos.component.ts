@@ -12,6 +12,8 @@ export class TodosComponent implements OnInit {
   todosClosed: any = [];
   form = new FormGroup({
     message: new FormControl(''),
+    image: new FormControl(''),
+    imageFile: new FormControl(''),
   });
 
   constructor(private todoService: TodoService){}
@@ -23,9 +25,10 @@ export class TodosComponent implements OnInit {
 
   create() {
     const newMessage = this.form.controls['message'].value;
-    this.todoService.create(newMessage).subscribe(res => {
+    const file = this.form.controls['imageFile'].value;
+    this.todoService.create(newMessage, file).subscribe(res => {
       this.getOpen();
-      this.form.setValue({message: ''});
+      this.form.setValue({message: '', image: null, imageFile: null});
     });
   }
 
@@ -63,6 +66,15 @@ export class TodosComponent implements OnInit {
     } else {
       this.todoService.getSortedClosed(order).subscribe(res => {
         this.todosClosed = res.list;
+      });
+    }
+  }
+
+  onFileChange(event:any) {
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      this.form.patchValue({
+        imageFile: file
       });
     }
   }
