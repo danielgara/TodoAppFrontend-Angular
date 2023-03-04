@@ -51,7 +51,7 @@
               <td>{{ todo.message }}</td>
               <td>{{ todo.state }}</td>
               <td><img *ngIf="todo.image != ''" height="50px" 
-                src="{{'http://localhost:3001/images/' + todo.image}}"/>
+                src="{{BACKEND_URI + 'images/' + todo.image}}"/>
               </td>
               <td>{{ todo.updatedAt }}</td>
               <td>
@@ -98,7 +98,7 @@
               <td>{{ todo.message }}</td>
               <td>{{ todo.state }}</td>
               <td><img *ngIf="todo.image != ''" height="50px" 
-                src="{{'http://localhost:3001/images/' + todo.image}}"/>
+                src="{{BACKEND_URI + 'images/' + todo.image}}"/>
               </td>
               <td>{{ todo.updatedAt }}</td>
               <td>

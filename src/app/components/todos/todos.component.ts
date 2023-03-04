@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TodoService } from '../../services/todo.service';
 import { FormGroup, FormControl } from '@angular/forms';
+import { BACKEND_URI } from '../../constants';
 
 @Component({
   selector: 'app-todos',
@@ -15,6 +16,7 @@ export class TodosComponent implements OnInit {
     image: new FormControl(''),
     imageFile: new FormControl(''),
   });
+  BACKEND_URI: string = BACKEND_URI;
 
   constructor(private todoService: TodoService){}
 
